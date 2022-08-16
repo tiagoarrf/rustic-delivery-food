@@ -23,27 +23,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
 		
-		
-		//.antMatchers("/sobre").hasAnyRole("USER","ADMIN")
 		.antMatchers("/").permitAll()
 		.antMatchers("/home").permitAll()
 		.antMatchers("/sobre").permitAll()
 		.antMatchers("/contato").permitAll()
 		.antMatchers("/login").permitAll()
-		.antMatchers("/*/*/*/*").permitAll()
-		.antMatchers("/**").permitAll()
 		.antMatchers("/entrar").permitAll()
-		.antMatchers("/cliente/atualizar").permitAll()
-		.antMatchers("/cliente/salvar").permitAll()
-		.antMatchers("/cliente/listar").permitAll()
-		.antMatchers("/pedido/listar").permitAll()
-		.antMatchers("/pedido/listar/*").permitAll()
-		.antMatchers("/pedido/confirmado").permitAll()
-		.antMatchers("/pedido/confirmacao").permitAll()
-		.antMatchers("/gerente/prato/lisatar").permitAll()
-		.antMatchers("/gerente/cliente/listar").permitAll()
-		.antMatchers("/pedido/salvar").permitAll()
-		.antMatchers("/pessoa/listar").authenticated()//basta estar autenticado
+		.antMatchers("/cliente/atualizar").hasRole("USER")
+		.antMatchers("/cliente/salvar").authenticated()
+		.antMatchers("/cliente/listar").authenticated()
+		.antMatchers("/pedido/listar").authenticated()
+		.antMatchers("/pedido/listar/*").authenticated()
+		.antMatchers("/pedido/confirmado").authenticated()
+		.antMatchers("/pedido/confirmacao").authenticated()
+		.antMatchers("/gerente/prato/lisatar").authenticated()
+		.antMatchers("/gerente/cliente/listar").authenticated()
+		.antMatchers("/pedido/salvar").authenticated()
+		.antMatchers("/pessoa/listar").authenticated()
 		
 		.anyRequest().authenticated()
 		
