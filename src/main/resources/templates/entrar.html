@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="shortcut icon" href="/img/favicon.png" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mil Sabores</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/style.css">
+
+</head>
+
+<body id="pageEntrarActive">
+	<div id="menuSanduiche">
+		<label class="sanduiche"> <span></span> <span></span> <span></span>
+		</label>
+	</div>
+	<nav>
+
+		<span> <a id="nomeSite" href="/">Mil Sabores</a>
+		</span>
+		<ul id="menu">
+			<li><a class="aba1" href="/">Início</a></li>
+			<li><a class="aba2" href="/sobre">Sobre</a></li>
+			<li><a class="aba3" href="/pratos">Pratos</a></li>
+			<li><a class="aba4" href="/contato">Contato</a></li>
+			<li><a class="aba5" href="/entrar">Entrar</a></li>
+		</ul>
+	</nav>
+
+
+	<p id="subTitle">Entre ou Cadastre-se</p>
+	<section class="secInfo" id="info">
+		<div class="container-fluid">
+			<form method="post">
+				<div th:if="${param.error}">
+					<div class="alert">Ops! Email e/ou senha
+						inválidos.</div>
+				</div>
+				<div th:if="${param.logout}">
+					<div class="alert">Até logo!</div>
+				</div>
+				<br>
+				<div>
+					<div>
+						<input type="email" name="username" class="form-control inputLogin" placeholder="Email"
+							required>
+					</div>
+					<div>
+						<input type="password" name="password" class="form-control inputLogin" placeholder="Senha"
+							required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<label class="form-check-label" for="gridCheck"> Lembrar
+							de mim </label>
+					</div><br>
+					<input id="bntCadastrar" type="submit" value="Entrar">
+				</div>
+				<br>
+				<h3><a href="/cliente/cadastrar">Criar conta</a></h3>
+	</section>
+
+	<footer>
+		<span> <a href="https://www.tripadvisor.com.br" title="TripAdvisor"><img id="iconsLink"
+					src="/img/tripAdvisor.png" /></a>
+		</span> <span> <a href="https://www.facebook.com/" title="Facebook"><img id="iconsLink"
+					src="/img/facebook.png" /></a>
+		</span> <span> <a href="https://www.instagram.com/" title="Instagram"><img id="iconsLink"
+					src="/img/instagram.png" /></a>
+		</span> <br>By Tiago A. Fontenele <br> Fone: (99) 9 9999-9999 <br>
+		2019
+	</footer>
+	<script src="/js/main.js" defer></script>
+	<script src="/js/jquery.min.js" defer></script>
+	<script src="/js/jquery.mask.min.js" defer></script>
+</body>
+
+</html>

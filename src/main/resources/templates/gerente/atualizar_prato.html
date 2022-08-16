@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="shortcut icon" href="/img/favicon.png" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mil Sabores</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="/css/style.css">
+</head>
+
+<body id="pageGerentePratosActive">
+	<div id="menuSanduiche">
+		<label class="sanduiche"> <span></span> <span></span> <span></span>
+		</label>
+	</div>
+	<nav>
+		<span> <a id="nomeSite" href="/">Mil Sabores</a>
+		</span>
+		<ul id="menu">
+			<li><a class="aba1" href="/home">Início</a></li>
+			<li><a class="aba6" href="/gerente/prato/listar">Pratos</a></li>
+			<li><a class="aba7" href="/gerente/cliente/listar">Clientes</a></li>
+			<li><a class="aba8" href="/pedido/listar_pendente">Pedidos</a></li>
+			<li><a class="aba5" href="/sair">Sair</a></li>
+		</ul>
+	</nav>
+	<p id="subTitle">Atualizar Pratos</p>
+	<section>
+		<form action="/gerente/prato/atualizar" class="col s12" enctype="multipart/form-data" method="post"
+			th:object="${prato}">
+			<input th:field="*{idPrato}" type="hidden"> <input th:field="*{status}" th:value="1" type="hidden">
+			<div class="row"><input class="validate" id="nome_prato" placeholder="Nome do Prato" required
+					th:field="*{nome}" type="text"> <span class="red-text" th:if="${#fields.hasErrors('nome')}">Nome
+					Inválido</span>
+			</div>
+			<div class="row"><input class="validate" id="desc_prato" placeholder="Descrição Prato" required
+					th:field="*{descricao}" type="text"> <span class="red-text"
+					th:if="${#fields.hasErrors('descricao')}">Descrição Inválida</span>
+			</div>
+			<div class="row"><input class="validate" id="money" placeholder="Preço Prato"
+				required type="text" value="" th:field="*{preco}"
+					onkeypress="$(this).mask('#.##0.00', {reverse: true})"><br>
+				<span class="red-text" th:if="${#fields.hasErrors('preco')}">Preço
+					Inválido</span>
+			</div>
+			<div class="file-field input-field">
+				<label for="imagem">
+					<img src="" id="imgPratosGerente" style="display: none;">
+				</label>
+				<div class="btn">
+					<span>Imagem</span> <input id="imagem" name="imagem" type="file" accept="image/*"
+						onchange="previewImage();" required>
+					<span class="red-text" th:if="${#fields.hasErrors('descricao')}">Descrição Inválida</span>
+				</div>
+			</div>
+			<button type="submit" id="bntAtualizar" onclick="setMoneyValue()">Atualizar</button>
+		</form>
+	</section>
+
+	<footer>
+		<span> <a href="https://www.tripadvisor.com.br" title="TripAdvisor"><img id="iconsLink"
+					src="/img/tripAdvisor.png" /></a>
+		</span> <span> <a href="https://www.facebook.com/" title="Facebook"><img id="iconsLink"
+					src="/img/facebook.png" /></a>
+		</span> <span> <a href="https://www.instagram.com/" title="Instagram"><img id="iconsLink"
+					src="/img/instagram.png" /></a>
+		</span> <br>By Tiago A. Fontenele <br> Fone: (99) 9 9999-9999 <br>
+		2019
+	</footer>
+	<script src="/js/main.js" defer></script>
+	<script src="/js/jquery.min.js" defer></script>
+	<script src="/js/jquery.mask.min.js" defer></script>
+</body>
+
+</html>
